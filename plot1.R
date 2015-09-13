@@ -7,8 +7,8 @@ if (!file.exists('project1.zip')) {
 #Unzip it and load into data
 if (!file.exists('household_power_consumption.txt')) {
     unzip("project1.zip")
-    data <- read.table('household_power_consumption.txt', header = TRUE, sep = ';', na.strings = '?', stringsAsFactors = FALSE)
 }
+data <- read.table('household_power_consumption.txt', header = TRUE, sep = ';', na.strings = '?', stringsAsFactors = FALSE)
 
 #Filter the data for the selected dates
 select <- c('1/2/2007', '2/2/2007')
