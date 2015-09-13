@@ -14,10 +14,13 @@ if (!file.exists('household_power_consumption.txt')) {
 select <- c('1/2/2007', '2/2/2007')
 d <- data[data$Date %in% select,]
 
-#Start device
-png(filename = "plot1.png", width = 480, height = 480, units = "px")
+d$DateTime <- strptime(paste(d$Date, d$Time), "%d/%m/%Y %H:%M:%S")
 
-hist(d$Global_active_power, xlab='Global Active Power (kilowatts)', main='Global Active Power', col = 'red')
+#Start device
+png(filename = "plot2.png", width = 480, height = 480, units = "px")
+
+plot(d$DateTime, d$Global_active_power, type='n', ylab='Global Active Power (kilowatts)', xlab='')
+lines(d$DateTime, d$Global_active_power, type='l')
 
 # Close the device
 dev.off()
